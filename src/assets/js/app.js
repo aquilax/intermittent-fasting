@@ -89,7 +89,7 @@ window.appCommit = 'XXXXXX';
   }
 
   function setupSettings() {
-    $('#version').text(context.appVersion + ' - ' + window.appCommit);
+    $('#version').text(context.appVersion + '(' + window.appCommit +')');
     $('#notifications').prop('checked', config.notificationsEnabled);
     $('#startTimeSetting').val(config.startTime)
     $('#endTimeSetting').val(config.endTime)

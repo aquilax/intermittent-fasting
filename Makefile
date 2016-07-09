@@ -25,10 +25,6 @@ clean_images:
 
 deploy: all
 	sed -i'' -e 's/XXXXXX/$(COMMIT)/g' $(BUILD)/assets/js/app.js
-	#rm -rf ../intermittent-fasting.github.io/*
+	rm -rf ../intermittent-fasting.github.io/*
 	cp -r $(BUILD)/* ../intermittent-fasting.github.io/
-	pushd ../intermittent-fasting.github.io/
-	git add .
-	git commit -am "Update"
-	git push
-	popd
+	cd ../intermittent-fasting.github.io/;  git add .; git commit -am "Update"; git push
