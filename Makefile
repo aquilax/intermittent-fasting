@@ -26,7 +26,7 @@ deploy: all
 	cp -r $(BUILD) /tmp
 	git checkout gh-pages
 	cp -r /tmp/$(BUILD)/* .
-	rm -rf .
+	git rm -rf .
 	git add .
 	git commit -am "Update"
 	git push
