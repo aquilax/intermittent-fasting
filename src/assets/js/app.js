@@ -1,3 +1,5 @@
+window.appVersion = '0.0.1';
+
 (function(context, $){
   'use strict';
   var defaultConfig = {
@@ -16,10 +18,10 @@
 
   function getNext(now, time) {
     var timeArr = time.split(":");
-    goalHours = parseInt(timeArr[0], 10);
-    goalMinutes = parseInt(timeArr[1], 10);
-    nowHour = now.hours();
-    nowMinues = now.minutes();
+    var goalHours = parseInt(timeArr[0], 10);
+    var goalMinutes = parseInt(timeArr[1], 10);
+    var nowHour = now.hours();
+    var nowMinues = now.minutes();
 
     if (nowHour > goalHours || (nowHour === goalHours && nowMinues >= goalMinutes)) {
       return now.add(1, 'days').hours(goalHours).minutes(goalMinutes);
@@ -86,6 +88,7 @@
   }
 
   function setupSettings() {
+    $('#version').text(context.appVersion);
     $('#notifications').prop('checked', config.notificationsEnabled);
     $('#startTimeSetting').val(config.startTime)
     $('#endTimeSetting').val(config.endTime)

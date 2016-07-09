@@ -9,7 +9,8 @@ self.addEventListener('install', e => {
         '/assets/css/style.css',
         '/assets/js/bower/jquery/dist/jquery.min.js',
         '/assets/js/bower/moment/moment.js',
-        '/assets/js/app.js'
+        '/assets/js/app.js',
+        '/sw.js'
       ])
       .then(() => self.skipWaiting());
     })

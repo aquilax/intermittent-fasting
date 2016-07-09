@@ -5,8 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name=viewport content="width=device-width, initial-scale=1">
     <title>Intermittent Fasting Tracker</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="assets/images/icon_192.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Intermittent Fasting Tracker">
+    <link rel="apple-touch-icon-precomposed" href="assets/images/icon_144.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="assets/images/icon_192.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link rel="shortcut icon" href="assets/images/icon_16.png">
+
     <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="assets/css/style.css"/>
+
 </head>
 <body>
     <div><label>Now</label> <span class="b" id="currentTimeExact"></span></div>
@@ -25,6 +43,7 @@
     </div>
     <div>
     <button id="save">Save</button>
+    <div>Version: <span id="version"></span></div>
     </div>
 
     <script src="assets/js/bower/jquery/dist/jquery.min.js"></script>
@@ -47,7 +66,7 @@
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
       ga('create', 'UA-115818-70', 'auto');
-      ga('send', 'pageview');
+      ga('send', 'pageview', {version: window.appVersion});
 
     </script>
 </body>
