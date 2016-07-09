@@ -24,12 +24,11 @@ clean_images:
 	rm -Rf $(BUILD_IMAGES)/*
 
 deploy: all
-	cp -r $(BUILD) /tmp
-	sed -i'' -e 's/XXXXXX/$(COMMIT)/g' /tmp/build/assets/js/app.js
-	git checkout gh-pages
-	rm -rf *
-	cp -r /tmp/build/* .
+	sed -i'' -e 's/XXXXXX/$(COMMIT)/g' $(BUILD)/assets/js/app.js
+	#rm -rf ../intermittent-fasting.github.io/*
+	cp -r $(BUILD)/* ../intermittent-fasting.github.io/
+	pushd ../intermittent-fasting.github.io/
 	git add .
 	git commit -am "Update"
 	git push
-	git checkout master
+	popd
