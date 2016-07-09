@@ -9,7 +9,7 @@ BUILD = ./build
 
 
 all: clean build
-	cp -r $(SRC)/ $(BUILD)
+	cp -r $(SRC)/* $(BUILD)
 
 images: clean_images
 	$(foreach size, 16 48 72 96 144 168 192, \
@@ -21,3 +21,10 @@ clean:
 
 clean_images:
 	rm -Rf $(BUILD_IMAGES)/*
+
+deploy: all
+	cp -r $(BUILD) /tmp
+	git checkout gh-pages
+	cp -r /tmp/$(BUILD)/* .
+	git commit -am "Update"
+	#git push
