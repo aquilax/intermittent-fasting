@@ -2,15 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name=viewport content="width=device-width, initial-scale=1">
     <title>Intermittent Fasting Tracker</title>
+    <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="assets/css/style.css"/>
-    <script src="assets/js/bower/moment/moment.js"></script>
-    <script src="assets/js/app.js"></script>
 </head>
 <body>
     <div><label>Now</label> <span class="b" id="currentTimeExact"></span></div>
     <div><label>Fasting ends</label> <span id="endTimeExact"></span>, <span class="b" id="endTime"></span></div>
     <div><label>Fasting starts</label> <span id="startTimeExact"></span>, <span class="b" id="startTime"></span></div>
+
+    <h2>Settings</h2>
+    <div>
+    <label>Notifications: <input type="checkbox" name="notifications" id="notifications" /></label>
+    </div>
+    <div>
+    <label>Start Time: <input type="time" id="startTimeSetting" step="900" required /></label>
+    </div>
+    <div>
+    <label>End Time: <input type="time" id="endTimeSetting" step="900" required /></label>
+    </div>
+    <div>
+    <button id="save">Save</button>
+    </div>
+
+    <script src="assets/js/bower/jquery/dist/jquery.min.js"></script>
+    <script src="assets/js/bower/moment/moment.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script>
+      if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js', { scope: '/' })
+          .then(function(registration) {
+                console.log('Service Worker Registered');
+          });
+        navigator.serviceWorker.ready.then(function(registration) {
+           console.log('Service Worker Ready');
+        });
+      }
+
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-115818-70', 'auto');
+      ga('send', 'pageview');
+
+    </script>
 </body>
 </html>
