@@ -5,6 +5,13 @@
     endTime: "12:00"
   }
 
+  var $currentTimeExact;
+  var $startTime;
+  var $startTimeExact;
+  var $endTime;
+  var $endTimeExact;
+
+
   function getNext(now, time) {
     var timeArr = time.split(":");
     goalHours = parseInt(timeArr[0], 10);
@@ -12,28 +19,19 @@
     nowHour = now.hours();
     nowMinues = now.minutes();
 
-    if (
-      nowHour > goalHours ||
-      (nowHour === goalHours && nowMinues >= goalMinutes)
-    ){
-      // passed, set to tomorrow goal time
+    if (nowHour > goalHours || (nowHour === goalHours && nowMinues >= goalMinutes)) {
       return now.add(1, 'days').hours(goalHours).minutes(goalMinutes);
     }
     return now.hours(goalHours).minutes(goalMinutes);
   }
 
   function initTimers(now) {
-    var $currentTimeExact = context.document.getElementById('currentTimeExact');
     $currentTimeExact.innerHTML = now.format('LLL');
 
-    var $startTime = context.document.getElementById('startTime');
-    var $startTimeExact = context.document.getElementById('startTimeExact');
     var startTime = getNext(now.clone(), config.startTime);
     $startTime.innerHTML = now.to(startTime);
     $startTimeExact.innerHTML = startTime.calendar();
 
-    var $endTime = context.document.getElementById('endTime');
-    var $endTimeExact = context.document.getElementById('endTimeExact');
     var endTime = getNext(now.clone(), config.endTime);
     $endTime.innerHTML = now.to(endTime);
     $endTimeExact.innerHTML = endTime.calendar();
@@ -57,8 +55,17 @@
   }
 
   function init(context) {
+    $currentTimeExact = context.document.getElementById('currentTimeExact');
+    $startTime = context.document.getElementById('startTime');
+    $startTimeExact = context.document.getElementById('startTimeExact');
+    $endTime = context.document.getElementById('endTime');
+    $endTimeExact = context.document.getElementById('endTimeExact');
+
     setupMoment();
     initTimers(moment());
+    setInterval(function(){
+      initTimers(moment());
+    }, 10000)
   }
 
   context.document.addEventListener('DOMContentLoaded', function() {
