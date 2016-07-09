@@ -1,0 +1,22 @@
+{
+  "name": "intermittent-fasting",
+  "description": "Intermittent Fasting Tracker",
+  "main": "index.js",
+  "authors": [
+    "aquilax"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/aquilax/intermittent-fasting",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "moment": "~2.14.1"
+  }
+}
