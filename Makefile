@@ -25,8 +25,8 @@ clean_images:
 deploy: all
 	cp -r $(BUILD) /tmp
 	git checkout gh-pages
-	cp -r /tmp/build/* .
 	rm -rf *
+	cp -r /tmp/build/* .
 	git add .
 	git commit -am "Update"
 	git push
