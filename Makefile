@@ -7,6 +7,7 @@ BUILD_IMAGES = $(SRC)/assets/images/
 
 BUILD = ./build
 
+COMMIT = $(shell git rev-parse --short HEAD)
 
 all: clean build
 	cp -r $(SRC)/* $(BUILD)
@@ -24,6 +25,7 @@ clean_images:
 
 deploy: all
 	cp -r $(BUILD) /tmp
+	sed -i'' -e 's/XXXXXX/$(COMMIT)/g' /tmp/build/assets/js/app.js
 	git checkout gh-pages
 	rm -rf *
 	cp -r /tmp/build/* .
