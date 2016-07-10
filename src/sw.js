@@ -1,4 +1,4 @@
-var staticCache = 'ifast-v1';
+var staticCache = 'ifast-v2';
 
 self.addEventListener('install', e => {
   e.waitUntil(
@@ -40,3 +40,11 @@ self.addEventListener('fetch', event => {
     })
   );
 });
+
+// setInterval(function(){
+//     self.registration.showNotification("title", {
+//       body: 'The Message',
+//       icon: 'images/icon.png',
+//       tag: 'my-tag'
+//     });
+// }, 10000);
